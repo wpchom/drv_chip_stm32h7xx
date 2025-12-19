@@ -34,7 +34,7 @@ static inline MDS_Tick_t DRV_HalGetTick(void)
     uint32_t count = 0;
 
     if ((DCB->DEMCR & DCB_DEMCR_TRCENA_Msk) == 0U) {
-        MDS_Item_t lock = MDS_CoreInterruptLock();
+        MDS_DevCmd_t lock = MDS_CoreInterruptLock();
         DCB->DEMCR |= DCB_DEMCR_TRCENA_Msk;
         DWT->CYCCNT = 0;
         DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
